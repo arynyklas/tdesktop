@@ -3225,7 +3225,7 @@ void HistoryInner::showContextMenu(QContextMenuEvent *e, bool showFromTouch) {
 }
 
 bool HistoryInner::hasCopyRestriction(HistoryItem *item) const {
-	return !_peer->allowsForwarding() || (item && item->forbidsForward());
+	return !_peer->allowsForwarding();
 }
 
 bool HistoryInner::hasCopyMediaRestriction(
@@ -3256,11 +3256,6 @@ bool HistoryInner::showCopyMediaRestriction(not_null<HistoryItem*> item) {
 bool HistoryInner::hasCopyRestrictionForSelected() const {
 	if (hasCopyRestriction()) {
 		return true;
-	}
-	for (const auto &[item, selection] : _selected) {
-		if (item && item->forbidsForward()) {
-			return true;
-		}
 	}
 	return false;
 }

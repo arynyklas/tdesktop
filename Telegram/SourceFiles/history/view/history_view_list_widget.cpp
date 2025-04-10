@@ -1615,18 +1615,6 @@ bool ListWidget::hasCopyRestrictionForSelected() const {
 	if (hasCopyRestriction()) {
 		return true;
 	}
-	if (_selected.empty()) {
-		if (_selectedTextItem && _selectedTextItem->forbidsForward()) {
-			return true;
-		}
-	}
-	for (const auto &[itemId, selection] : _selected) {
-		if (const auto item = session().data().message(itemId)) {
-			if (item->forbidsForward()) {
-				return true;
-			}
-		}
-	}
 	return false;
 }
 
@@ -4432,7 +4420,7 @@ void ConfirmSendNowSelectedItems(not_null<ListWidget*> widget) {
 CopyRestrictionType CopyRestrictionTypeFor(
 		not_null<PeerData*> peer,
 		HistoryItem *item) {
-	return (peer->allowsForwarding() && (!item || !item->forbidsForward()))
+	return (peer->allowsForwarding())
 		? CopyRestrictionType::None
 		: peer->isBroadcast()
 		? CopyRestrictionType::Channel

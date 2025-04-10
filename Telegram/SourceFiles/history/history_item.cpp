@@ -2338,7 +2338,7 @@ bool HistoryItem::allowsReschedule() const {
 bool HistoryItem::allowsForward() const {
 	return !isService()
 		&& isRegular()
-		&& !forbidsForward()
+		&& true
 		&& history()->peer->allowsForwarding()
 		&& (!_media || _media->allowsForward());
 }
@@ -2395,14 +2395,8 @@ bool HistoryItem::canStopPoll() const {
 	return canBeEdited() && isRegular();
 }
 
-bool HistoryItem::forbidsForward() const {
-	return (_flags & MessageFlag::NoForwards);
-}
-
 bool HistoryItem::forbidsSaving() const {
-	if (forbidsForward()) {
-		return true;
-	} else if (const auto invoice = _media ? _media->invoice() : nullptr) {
+	if (const auto invoice = _media ? _media->invoice() : nullptr) {
 		return HasExtendedMedia(*invoice);
 	}
 	return false;

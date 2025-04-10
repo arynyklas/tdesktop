@@ -100,7 +100,7 @@ void StoryMention::draw(
 		Painter &p,
 		const PaintContext &context,
 		const QRect &geometry) {
-	const auto showStory = _story->forbidsForward() ? 0 : 1;
+	const auto showStory = false ? 0 : 1;
 	if (!_thumbnail || _thumbnailFromStory != showStory) {
 		const auto item = _parent->data();
 		const auto history = item->history();

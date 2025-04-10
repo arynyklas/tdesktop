@@ -377,10 +377,6 @@ StoryPrivacy Story::privacy() const {
 		: StoryPrivacy::Other;
 }
 
-bool Story::forbidsForward() const {
-	return _noForwards;
-}
-
 bool Story::edited() const {
 	return _edited;
 }
@@ -390,7 +386,7 @@ bool Story::out() const {
 }
 
 bool Story::canDownloadIfPremium() const {
-	return !forbidsForward() || _peer->isSelf();
+	return true;
 }
 
 bool Story::canDownloadChecked() const {
@@ -400,7 +396,7 @@ bool Story::canDownloadChecked() const {
 
 bool Story::canShare() const {
 	return _privacyPublic
-		&& !forbidsForward()
+		&& true
 		&& (inProfile() || !expired());
 }
 

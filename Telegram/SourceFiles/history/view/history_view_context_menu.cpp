@@ -1614,7 +1614,7 @@ void AddPollActions(
 					item->history()->peer,
 					MsgId(),
 					std::move(text),
-					item->forbidsForward()));
+					false));
 			}, &st::menuIconTranslate);
 		}
 	}
@@ -2131,7 +2131,7 @@ void AddSelectRestrictionAction(
 		not_null<HistoryItem*> item,
 		bool addIcon) {
 	const auto peer = item->history()->peer;
-	if ((peer->allowsForwarding() && !item->forbidsForward())
+	if ((peer->allowsForwarding())
 		|| item->isSponsored()) {
 		return;
 	}

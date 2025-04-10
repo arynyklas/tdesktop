@@ -429,7 +429,6 @@ public:
 	[[nodiscard]] bool canPin() const;
 	[[nodiscard]] bool canBeEdited() const;
 	[[nodiscard]] bool canStopPoll() const;
-	[[nodiscard]] bool forbidsForward() const;
 	[[nodiscard]] bool forbidsSaving() const;
 	[[nodiscard]] bool allowsSendNow() const;
 	[[nodiscard]] bool allowsReschedule() const;

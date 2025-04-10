@@ -181,7 +181,6 @@ public:
 	void setInProfile(bool value);
 	[[nodiscard]] bool inProfile() const;
 	[[nodiscard]] StoryPrivacy privacy() const;
-	[[nodiscard]] bool forbidsForward() const;
 	[[nodiscard]] bool edited() const;
 	[[nodiscard]] bool out() const;
 
